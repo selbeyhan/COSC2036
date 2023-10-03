@@ -70,7 +70,7 @@ void outputToFile(LinkedList& list, string filename){
 int main(int argc, char *argv[]){
     // ./lab6 input.txt 5 output.txt
     if (argc != 4) {
-        cout << "Invalid Arguments";
+        cout << "Invalid Arguments\nExample; ./lab6 input.txt 4 output.txt";
         exit(1);
     }
 
