@@ -1,5 +1,6 @@
 #include <iostream>
-#include <string>
+
+
 using namespace std;
 
 
@@ -97,24 +98,13 @@ int example5(int* first, int* second, int len){
 	return count;
 }
 
-double* makeArray(){}
+
 
 int main(int argc, char** argv){
 	// depending on argv call one of these functions:
 	// p1 for prefixAverage1, p2 for prefixAverage2, e1 for example1
 	// e2 for example2, e3 for example3, e4 for example4, e5 for example5
-	// $ ./HW3 p1 p1.txt 6
-	if (argc != 4) {
-		cout << "\tInvalid Arguments\n\tExample; /HW3 p1 p1.txt 6\n";
-        exit(1);
-
-	}
-	int maxRun = strtol(argv[3], nullptr, 0);
-	double* arr = new double[maxRun];
 	
-	if (argv[1] == "p1"){
-		arr = prefixAverage1(arr, maxRun);
-	}
-	cout << arr;
+
 	return 0;
 }
