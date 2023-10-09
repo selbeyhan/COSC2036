@@ -1,7 +1,8 @@
 {
-    "files.associations": {
-        "cstddef": "cpp",
-        "new": "cpp",
-        "fstream": "cpp"
-    }
+  "files.associations": {
+    "cstddef": "cpp",
+    "new": "cpp",
+    "fstream": "cpp",
+    "xstring": "cpp"
+  }
 }
