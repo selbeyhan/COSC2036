@@ -118,7 +118,7 @@ int main(int argc, char **argv)
 	// e2 for example2, e3 for example3, e4 for example4, e5 for example5
 	if (argc != 4)
 	{
-		cout << "Invalid input, example below\n\t $ ./HW3 p1 p1.txt 6";
+		cout << "Invalid input, example below\n\t>./HW3 p1 p1.txt 4";
 		return -1;
 	}
 
@@ -136,8 +136,11 @@ int main(int argc, char **argv)
 	{
 		int arrSize = pow(10, i);
 		int *arr = new int[arrSize]();
-		int *arr2 = new int[arrSize]();
-
+		int *arr2 = nullptr;
+		if (algorithm == "e5")
+		{
+			arr2 = new int[arrSize]();
+		}
 		clock_t startTime = clock();
 		if (algorithm == "p1")
 		{
@@ -148,7 +151,7 @@ int main(int argc, char **argv)
 		}
 		else if (algorithm == "p2")
 		{
-			double *dArry = new double[arrSize];
+			double *dArry = new double[arrSize]();
 			double *result = prefixAverage2(dArry, arrSize);
 			delete[] dArry;
 			delete result;
@@ -177,13 +180,21 @@ int main(int argc, char **argv)
 		{
 			cout << "Invalid algorithm specified." << endl;
 			delete[] arr;
-			return 1;
+			if (arr2)
+			{
+				delete[] arr2;
+			}
+			outFile.close();
+			return -1;
 		}
 		clock_t endTime = clock();
 		double elapsedTime = log10(static_cast<double>(endTime - startTime) / CLOCKS_PER_SEC * 1000);
 		outFile << elapsedTime << endl;
 		delete[] arr;
-		delete[] arr2;
+		if (arr2)
+		{
+			delete[] arr2;
+		}
 	}
 
 	outFile.close();

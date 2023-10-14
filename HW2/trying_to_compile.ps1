@@ -1,1 +1,0 @@
-.\HW2 add 1_a.txt 1_b.txt selman.txt 
