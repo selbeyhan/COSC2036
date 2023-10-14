@@ -141,7 +141,9 @@ int main(int argc, char **argv)
 		{
 			arr2 = new int[arrSize]();
 		}
+
 		clock_t startTime = clock();
+
 		if (algorithm == "p1")
 		{
 			double *dArry = new double[arrSize]();
@@ -188,7 +190,7 @@ int main(int argc, char **argv)
 			return -1;
 		}
 		clock_t endTime = clock();
-		double elapsedTime = log10(static_cast<double>(endTime - startTime) / CLOCKS_PER_SEC * 1000);
+		auto elapsedTime = log10(static_cast<double>(endTime - startTime) * 1000);
 		outFile << elapsedTime << endl;
 		delete[] arr;
 		if (arr2)
