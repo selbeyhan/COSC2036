@@ -3,6 +3,13 @@
     "cstddef": "cpp",
     "new": "cpp",
     "fstream": "cpp",
-    "xstring": "cpp"
+    "xstring": "cpp",
+    "string": "cpp",
+    "initializer_list": "cpp",
+    "type_traits": "cpp",
+    "vector": "cpp",
+    "xutility": "cpp",
+    "ostream": "cpp",
+    "cmath": "cpp"
   }
 }
