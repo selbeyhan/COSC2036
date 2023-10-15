@@ -191,7 +191,8 @@ int main(int argc, char **argv)
 		}
 		clock_t endTime = clock();
 		double elapsedTime = log10(static_cast<double>(endTime - startTime) * 1000);
-		if (elapsedTime == -INFINITY) {
+		if (elapsedTime == -INFINITY)
+		{
 			elapsedTime = -2;
 		}
 		outFile << elapsedTime << endl;
