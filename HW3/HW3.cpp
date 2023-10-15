@@ -132,7 +132,7 @@ int main(int argc, char **argv)
 		return -1;
 	}
 
-	for (int i = 0; i <= upperLimit; i++)
+	for (int i = 1; i <= upperLimit; i++)
 	{
 		int arrSize = pow(10, i);
 		int *arr = new int[arrSize]();
@@ -190,7 +190,10 @@ int main(int argc, char **argv)
 			return -1;
 		}
 		clock_t endTime = clock();
-		auto elapsedTime = log10(static_cast<double>(endTime - startTime) * 1000);
+		double elapsedTime = log10(static_cast<double>(endTime - startTime) * 1000);
+		if (elapsedTime == -INFINITY) {
+			elapsedTime = -2;
+		}
 		outFile << elapsedTime << endl;
 		delete[] arr;
 		if (arr2)
