@@ -111,6 +111,24 @@ int example5(int *first, int *second, int len)
 	return count;
 }
 
+double linearRegressionPredict(double *x, double *y, int n, double x_pred)
+{
+	double sum_x = 0, sum_y = 0, sum_xy = 0, sum_x2 = 0;
+
+	for (int i = 0; i < n; i++)
+	{
+		sum_x += x[i];
+		sum_y += y[i];
+		sum_xy += x[i] * y[i];
+		sum_x2 += x[i] * x[i];
+	}
+
+	double m = (n * sum_xy - sum_x * sum_y) / (n * sum_x2 - sum_x * sum_x);
+	double b = (sum_y - m * sum_x) / n;
+
+	return m * x_pred + b;
+}
+
 int main(int argc, char **argv)
 {
 	// depending on argv call one of these functions:
@@ -125,6 +143,8 @@ int main(int argc, char **argv)
 	string algorithm = argv[1];
 	string outputFileName = argv[2];
 	int upperLimit = strtol(argv[3], nullptr, 0);
+	double *xValues = new double[upperLimit];
+	double *yValues = new double[upperLimit];
 	ofstream outFile(outputFileName);
 	if (!outFile.is_open())
 	{
@@ -196,6 +216,8 @@ int main(int argc, char **argv)
 			elapsedTime = -2;
 		}
 		outFile << elapsedTime << endl;
+		xValues[i - 1] = i;
+		yValues[i - 1] = elapsedTime;
 		delete[] arr;
 		if (arr2)
 		{
@@ -203,6 +225,16 @@ int main(int argc, char **argv)
 		}
 	}
 
+	if (upperLimit <= 5)
+	{
+		for (int i = upperLimit; i < 6; i++)
+		{
+			double prediction = linearRegressionPredict(xValues, yValues, i, 6);
+			outFile << prediction << endl;
+		}
+	}
+	delete[] xValues;
+	delete[] yValues;
 	outFile.close();
 	return 0;
 }
