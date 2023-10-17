@@ -139,7 +139,7 @@ int main(int argc, char **argv)
 		cout << "Invalid input, example below\n\t>./HW3 p1 p1.txt 4";
 		return -1;
 	}
-
+	int numberOfDataPointsNeeded = 6;
 	string algorithm = argv[1];
 	string outputFileName = argv[2];
 	int upperLimit = strtol(argv[3], nullptr, 0);
@@ -225,11 +225,13 @@ int main(int argc, char **argv)
 		}
 	}
 
-	if (upperLimit <= 5)
+	if (upperLimit <= numberOfDataPointsNeeded - 1)
 	{
-		for (int i = upperLimit; i < 6; i++)
+		for (int i = upperLimit; i < numberOfDataPointsNeeded; i++)
 		{
-			double prediction = linearRegressionPredict(xValues, yValues, i, 6);
+			double prediction = linearRegressionPredict(xValues, yValues, i, i + 1);
+			xValues[i] = i;
+			yValues[i] = prediction;
 			outFile << prediction << endl;
 		}
 	}
